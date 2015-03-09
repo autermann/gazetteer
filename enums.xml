@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<enumsConfig>
+  <enum name="featureType">
+    <value>COUNTRY</value>
+    <value>ADM1</value>
+    <value>PPL</value>
+  </enum>
+</enumsConfig>
