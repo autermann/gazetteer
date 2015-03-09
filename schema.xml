@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema name="gazetteer" version="1.5">
+    
+    <!-- various base types -->
+    <fieldType name="string" class="solr.StrField" sortMissingLast="true"/>
+    <fieldType name="long" class="solr.TrieLongField" positionIncrementGap="0" precisionStep="0"/>
+    
+    <!-- geometry -->
+    <fieldType name="location" class="solr.SpatialRecursivePrefixTreeFieldType"
+        spatialContextFactory="com.spatial4j.core.context.jts.JtsSpatialContextFactory"
+        distErrPct="0.025"
+        maxDistErr="0.000009"
+        geo="true"
+        units="degrees"
+        distCalculator="haversine" />
+
+    <!-- generic text -->
+    <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
+        <analyzer type="index">
+            <tokenizer class="solr.StandardTokenizerFactory"/>
+            <filter class="solr.LowerCaseFilterFactory"/>
+            <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" 
+                catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
+            <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>           
+        </analyzer>
+        <analyzer type="query">
+            <tokenizer class="solr.StandardTokenizerFactory"/>            
+            <filter class="solr.LowerCaseFilterFactory"/>
+            <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1"
+                catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
+        </analyzer>
+    </fieldType>    
+
+    <uniqueKey>id</uniqueKey>
+    
+    <field name="_version_" indexed="true" stored="true" type="long"/>
+    <field name="id" indexed="true" multiValued="false" required="true" stored="true" type="string"/>
+    <field name="geometry" indexed="false" multiValued="true" required="true" stored="true" type="location"/>
+    <field name="name" indexed="true" multiValued="false" required="true" stored="true" type="text"/>
+    <field name="spelling" indexed="true" multiValued="true" required="true" stored="true" type="text"/>
+    <field name="wikipedia" indexed="false" multiValued="false" required="false" stored="true" type="string"/>
+    <field name="dbpedia" indexed="false" multiValued="false" required="false" stored="true" type="string"/>
+</schema>
+
