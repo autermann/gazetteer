@@ -19,6 +19,8 @@
 
   <!-- Bulgarian -->
   <field name="name_bg" indexed="true" stored="true" multiValued="true" required="false" type="text_bg" />
+  <!-- Bosnian -->
+  <field name="name_bs" indexed="true" stored="true" multiValued="true" required="false" type="text" />
   <!-- Czech -->
   <field name="name_cs" indexed="true" stored="true" multiValued="true" required="false" type="text_cs" />
   <!-- Danish -->
@@ -43,28 +45,44 @@
   <field name="name_hr" indexed="true" stored="true" multiValued="true" required="false" type="text" />
   <!-- Hungarian -->
   <field name="name_hu" indexed="true" stored="true" multiValued="true" required="false" type="text_hu" />
+  <!-- Islandic-->
+  <field name="name_is" indexed="true" stored="true" multiValued="true" required="false" type="text" />
   <!-- Italian -->
   <field name="name_it" indexed="true" stored="true" multiValued="true" required="false" type="text_it" />
+  <!-- Letzeburgesch -->
+  <field name="name_lb" indexed="true" stored="true" multiValued="true" required="false" type="text" />
   <!-- Lithuanian -->
   <field name="name_lt" indexed="true" stored="true" multiValued="true" required="false" type="text" />
   <!-- Latvian -->
   <field name="name_lv" indexed="true" stored="true" multiValued="true" required="false" type="text_lv" />
+  <!-- Macedonian -->
+  <field name="name_mk" indexed="true" stored="true" multiValued="true" required="false" type="text" />
   <!-- Maltese -->
   <field name="name_mt" indexed="true" stored="true" multiValued="true" required="false" type="text" />
   <!-- Dutch -->
   <field name="name_nl" indexed="true" stored="true" multiValued="true" required="false" type="text_nl" />
+  <!-- Norwegian -->
+  <field name="name_no" indexed="true" stored="true" multiValued="true" required="false" type="text_no" />
   <!-- Polish -->
   <field name="name_pl" indexed="true" stored="true" multiValued="true" required="false" type="text" />
   <!-- Portugese -->
   <field name="name_pt" indexed="true" stored="true" multiValued="true" required="false" type="text_pt" />
+  <!-- Romansh -->
+  <field name="name_rm" indexed="true" stored="true" multiValued="true" required="false" type="text" />
   <!-- Romanian -->
   <field name="name_ro" indexed="true" stored="true" multiValued="true" required="false" type="text_ro" />
   <!-- Slovak -->
   <field name="name_sk" indexed="true" stored="true" multiValued="true" required="false" type="text" />
   <!-- Slovene -->
   <field name="name_sl" indexed="true" stored="true" multiValued="true" required="false" type="text" />
+  <!-- Albanian -->
+  <field name="name_sq" indexed="true" stored="true" multiValued="true" required="false" type="text" />
+  <!-- Serbian -->
+  <field name="name_sr" indexed="true" stored="true" multiValued="true" required="false" type="text" />
   <!-- Swedish -->
-  <field name="name_sv" indexed="true" stored="true" multiValued="true" required="false" type="text_sv" />   
+  <field name="name_sv" indexed="true" stored="true" multiValued="true" required="false" type="text_sv" />
+  <!-- Turkish -->
+  <field name="name_tr" indexed="true" stored="true" multiValued="true" required="false" type="text_tr" />
   
   <!-- Copy all alternative names into a single array -->
   <copyField source="name_*" dest="names" />
