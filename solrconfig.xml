@@ -1065,12 +1065,13 @@
        This handler will pick a response format to match the input
        if the 'wt' parameter is not explicit
     -->
+  <!-- request handlers are implicitly defined; see SOLR-6499
   <requestHandler name="/update" class="solr.UpdateRequestHandler">
     <lst name="defaults">
       <str name="update.chain">skip-empty</str>
     </lst>
   </requestHandler>
-
+  -->
   <!-- The following are implicitly added
   <requestHandler name="/update/json" class="solr.UpdateRequestHandler">
         <lst name="defaults">
@@ -1717,7 +1718,7 @@
     </highlighting>
   </searchComponent>
 
-  <updateRequestProcessorChain name="skip-empty">
+  <updateRequestProcessorChain name="skip-empty" default="true">
     <processor class="TrimFieldUpdateProcessorFactory" />
     <processor class="RemoveBlankFieldUpdateProcessorFactory" />
     <processor class="solr.LogUpdateProcessorFactory" />
