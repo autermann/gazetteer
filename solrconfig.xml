@@ -1066,15 +1066,9 @@
        if the 'wt' parameter is not explicit
     -->
   <requestHandler name="/update" class="solr.UpdateRequestHandler">
-    <!-- See below for information on defining
-         updateRequestProcessorChains that can be used by name
-         on each Update Request
-      -->
-    <!--
-       <lst name="defaults">
-         <str name="update.chain">dedupe</str>
-       </lst>
-       -->
+    <lst name="defaults">
+      <str name="update.chain">skip-empty</str>
+    </lst>
   </requestHandler>
 
   <!-- The following are implicitly added
@@ -1722,6 +1716,13 @@
       </boundaryScanner>
     </highlighting>
   </searchComponent>
+
+  <updateRequestProcessorChain name="skip-empty">
+    <processor class="TrimFieldUpdateProcessorFactory" />
+    <processor class="RemoveBlankFieldUpdateProcessorFactory" />
+    <processor class="solr.LogUpdateProcessorFactory" />
+    <processor class="solr.RunUpdateProcessorFactory" />
+  </updateRequestProcessorChain>
 
   <!-- Update Processors
 
