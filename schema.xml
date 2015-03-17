@@ -131,58 +131,6 @@
   <!-- feature type enum -->
   <fieldType name="featureType" class="solr.EnumField" enumsConfig="enums.xml" enumName="featureType" />
 
-  <!-- geometry -->
-  <fieldType name="location" class="solr.SpatialRecursivePrefixTreeFieldType"
-             spatialContextFactory="com.spatial4j.core.context.jts.JtsSpatialContextFactory"
-             distErrPct="0.025" maxDistErr="0.000009" geo="true"
-             units="degrees" distCalculator="haversine" />
-
-  <!-- generic text exact -->
-  <fieldType name="text_exact" class="solr.TextField" positionIncrementGap="100">
-    <analyzer type="index">
-      <tokenizer class="solr.StandardTokenizerFactory"/>
-      <filter class="solr.LowerCaseFilterFactory"/>
-      <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" 
-        catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
-      <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
-    </analyzer>
-    <analyzer type="query">
-      <tokenizer class="solr.StandardTokenizerFactory"/>
-      <filter class="solr.LowerCaseFilterFactory"/>
-      <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1"
-        catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
-    </analyzer>
-  </fieldType>  
-
-  <!-- generic text -->
-  <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
-    <analyzer type="index">
-      <tokenizer class="solr.StandardTokenizerFactory"/>
-      <filter class="solr.LowerCaseFilterFactory"/>
-      <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" 
-        catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
-      <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
-      <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="25" />
-    </analyzer>
-    <analyzer type="query">
-      <tokenizer class="solr.StandardTokenizerFactory"/>
-      <filter class="solr.LowerCaseFilterFactory"/>
-      <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1"
-        catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
-    </analyzer>
-  </fieldType>  
-
-
-  <!-- various base types -->
-  <fieldType name="string" class="solr.StrField" sortMissingLast="true"/>
-  <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true"/>
-  <fieldType name="int" class="solr.TrieIntField" positionIncrementGap="0" precisionStep="0"/>
-  <fieldType name="tint" class="solr.TrieIntField" positionIncrementGap="0" precisionStep="8"/>
-  <fieldType name="float" class="solr.TrieFloatField" positionIncrementGap="0" precisionStep="0"/>
-  <fieldType name="tfloat" class="solr.TrieFloatField" positionIncrementGap="0" precisionStep="8"/>
-  <fieldType name="long" class="solr.TrieLongField" positionIncrementGap="0" precisionStep="0"/>
-  <fieldType name="tlong" class="solr.TrieLongField" positionIncrementGap="0" precisionStep="8"/>
-  <fieldType name="featureType" class="solr.EnumField" enumsConfig="enums.xml" enumName="featureType" />
 
   <!-- geometry -->
   <fieldType name="location" class="solr.SpatialRecursivePrefixTreeFieldType"
