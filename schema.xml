@@ -142,16 +142,16 @@
   <fieldType name="text_exact" class="solr.TextField" positionIncrementGap="100">
     <analyzer type="index">
       <tokenizer class="solr.StandardTokenizerFactory"/>
-      <filter class="solr.LowerCaseFilterFactory"/>
       <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" 
         catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
       <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
     </analyzer>
     <analyzer type="query">
       <tokenizer class="solr.StandardTokenizerFactory"/>
-      <filter class="solr.LowerCaseFilterFactory"/>
       <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1"
         catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
     </analyzer>
   </fieldType>  
 
@@ -159,17 +159,17 @@
   <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
     <analyzer type="index">
       <tokenizer class="solr.StandardTokenizerFactory"/>
-      <filter class="solr.LowerCaseFilterFactory"/>
       <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" 
         catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
-      <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
       <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="25" />
+      <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
     </analyzer>
     <analyzer type="query">
       <tokenizer class="solr.StandardTokenizerFactory"/>
-      <filter class="solr.LowerCaseFilterFactory"/>
       <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1"
         catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
     </analyzer>
   </fieldType>  
 
