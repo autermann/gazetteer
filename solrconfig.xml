@@ -238,76 +238,10 @@
     <processor class="solr.processor.TrimFieldUpdateProcessorFactory" />
     <processor class="solr.processor.RemoveBlankFieldUpdateProcessorFactory" />
     <processor class="solr.processor.UniqFieldsUpdateProcessorFactory">
-    	<lst name="fields">
-            <str>names</str>
-            <str>name_bg</str>
-            <str>name_bs</str>
-            <str>name_cs</str>
-            <str>name_da</str>
-            <str>name_de</str>
-            <str>name_el</str>
-            <str>name_en</str>
-            <str>name_es</str>
-            <str>name_et</str>
-            <str>name_fi</str>
-            <str>name_fr</str>
-            <str>name_ga</str>
-            <str>name_hr</str>
-            <str>name_hu</str>
-            <str>name_is</str>
-            <str>name_it</str>
-            <str>name_lb</str>
-            <str>name_lt</str>
-            <str>name_lv</str>
-            <str>name_mk</str>
-            <str>name_mt</str>
-            <str>name_nl</str>
-            <str>name_no</str>
-            <str>name_pl</str>
-            <str>name_pt</str>
-            <str>name_rm</str>
-            <str>name_ro</str>
-            <str>name_sk</str>
-            <str>name_sl</str>
-            <str>name_sq</str>
-            <str>name_sr</str>
-            <str>name_sv</str>
-            <str>name_tr</str>
-            <str>administrative_unit_names</str>
-            <str>administrative_unit_name_bg</str>
-            <str>administrative_unit_name_bs</str>
-            <str>administrative_unit_name_cs</str>
-            <str>administrative_unit_name_da</str>
-            <str>administrative_unit_name_de</str>
-            <str>administrative_unit_name_el</str>
-            <str>administrative_unit_name_en</str>
-            <str>administrative_unit_name_es</str>
-            <str>administrative_unit_name_et</str>
-            <str>administrative_unit_name_fi</str>
-            <str>administrative_unit_name_fr</str>
-            <str>administrative_unit_name_ga</str>
-            <str>administrative_unit_name_hr</str>
-            <str>administrative_unit_name_hu</str>
-            <str>administrative_unit_name_is</str>
-            <str>administrative_unit_name_it</str>
-            <str>administrative_unit_name_lb</str>
-            <str>administrative_unit_name_lt</str>
-            <str>administrative_unit_name_lv</str>
-            <str>administrative_unit_name_mk</str>
-            <str>administrative_unit_name_mt</str>
-            <str>administrative_unit_name_nl</str>
-            <str>administrative_unit_name_no</str>
-            <str>administrative_unit_name_pl</str>
-            <str>administrative_unit_name_pt</str>
-            <str>administrative_unit_name_rm</str>
-            <str>administrative_unit_name_ro</str>
-            <str>administrative_unit_name_sk</str>
-            <str>administrative_unit_name_sl</str>
-            <str>administrative_unit_name_sq</str>
-            <str>administrative_unit_name_sr</str>
-            <str>administrative_unit_name_sv</str>
-            <str>administrative_unit_name_tr</str>
-        </lst>
+      <str name="fieldRegex">name_.*</str>
+      <str name="fieldName">names</str>
+      <str name="fieldRegex">administrative_unit_name_.*</str>
+      <str name="fieldName">administrative_unit_names</str>
     </processor>
     <processor class="solr.processor.LogUpdateProcessorFactory" />
     <processor class="solr.processor.RunUpdateProcessorFactory" />
