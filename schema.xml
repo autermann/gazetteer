@@ -67,7 +67,7 @@
   <copyField source="name_*" dest="names" />
   <copyField source="name"   dest="names" />
 
-  <!-- maintain the non-stemmed words for exact matches -->
+  <!-- maintain the non-stemmed/ngrammed words for exact matches -->
   <copyField source="name_*" dest="names_exact" />
   <copyField source="name"   dest="names_exact" />
   <copyField source="name"   dest="name_exact" />
@@ -76,7 +76,7 @@
   <field name="administrative_unit_name"        indexed="true" stored="true"  multiValued="false" required="false" type="text"/>
 
   <!-- not ngrammed fields for exact matches -->
-  <field name="administrative_unit_name_exact"  indexed="true" stored="false" multiValued="false" required="true"  type="text_exact"/>
+  <field name="administrative_unit_name_exact"  indexed="true" stored="false" multiValued="false" required="false"  type="text_exact"/>
 
   <!-- a list of all names -->
   <field name="administrative_unit_names"       indexed="true" stored="false" multiValued="true"  required="false" type="text" omitNorms="true" />
@@ -123,7 +123,7 @@
   <copyField source="administrative_unit_name_*" dest="administrative_unit_names" />
   <copyField source="administrative_unit_name"   dest="administrative_unit_names" />
 
-  <!-- maintain the non-stemmed words for exact matches -->
+  <!-- maintain the non-stemmed/ngrammed words for exact matches -->
   <copyField source="administrative_unit_name_*" dest="administrative_unit_names_exact" />
   <copyField source="administrative_unit_name"   dest="administrative_unit_names_exact" />
   <copyField source="administrative_unit_name"   dest="administrative_unit_name_exact" />
