@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>de.conterra.ecodp</groupId>
+    <artifactId>ecodp-gazetteer</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <properties>
+        <smartfinder.version>1.1.0</smartfinder.version>
+        <jetty.version>9.2.7.v20150116</jetty.version>
+        <core0.name>gazetteer</core0.name>
+        <core1.name>gazetteer-swap</core1.name>
+        <jetty.port>8080</jetty.port>
+        <jetty.port.stop>8089</jetty.port.stop>
+        <solr.home>$${catalina.base}/webapps/${project.build.finalName}/WEB-INF/solr.home</solr.home>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>de.conterra.smartfinder</groupId>
+            <artifactId>ct-finder-server-webapp</artifactId>
+            <version>${smartfinder.version}</version>
+            <type>war</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.oracle</groupId>
+                    <artifactId>ojdbc6</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>de.conterra.smartfinder</groupId>
+            <artifactId>ct-finder-server-webapp</artifactId>
+            <version>${smartfinder.version}</version>
+            <classifier>core-config</classifier>
+            <type>zip</type>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>ct-dist-releases</id>
+            <name>repository for sdi.suite releases</name>
+            <url>http://vsdev0860.dev.esri-de.com/nexus/content/repositories/releases</url>
+            <releases><enabled>true</enabled></releases>
+            <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+        <repository>
+            <id>ct-dist-snapshots</id>
+            <name>repository for sdi.suite snapshots</name>
+            <url>http://vsdev0860.dev.esri-de.com/nexus/content/repositories/snapshots</url>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>ct-dist-releases-file</id>
+            <name>repository for sdi.suite releases</name>
+            <url>file://///vsdev0860.dev.esri-de.com/repo-internal/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>ct-dist-snapshots-file</id>
+            <name>repository for sdi.suite snapshots</name>
+            <url>file://///vsdev0860.dev.esri-de.com/repo-internal/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <build>
+
+        <finalName>gazetteer</finalName>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.4.1</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty.version}</version>
+                <configuration>
+                    <webApp>
+                        <contextPath>/</contextPath>
+                    </webApp>
+                    <scanIntervalSeconds>0</scanIntervalSeconds>
+                    <systemProperties>
+                        <systemProperty>
+                            <name>catalina.home</name>
+                            <value>${project.build.directory}</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <name>catalina.base</name>
+                            <value>${project.build.directory}</value>
+                        </systemProperty>
+                    </systemProperties>
+                    <httpConnector>
+                        <port>${jetty.port}</port>
+                    </httpConnector>
+                    <stopPort>${jetty.port.stop}</stopPort>
+                    <stopKey>STOP</stopKey>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>port-allocator-maven-plugin</artifactId>
+                <version>1.2</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <webResources>
+
+                        <resource>
+                            <filtering>false</filtering>
+                            <directory>src/main/conf</directory>
+                            <targetPath>WEB-INF/solr.home/${core0.name}/conf</targetPath>
+                        </resource>
+
+                        <resource>
+                            <filtering>false</filtering>
+                            <directory>src/main/conf</directory>
+                            <targetPath>WEB-INF/solr.home/${core1.name}/conf</targetPath>
+                        </resource>
+
+                    </webResources>
+
+                    <overlays>
+                        <overlay>
+                            <id>smart.finder</id>
+                            <groupId>de.conterra.smartfinder</groupId>
+                            <artifactId>ct-finder-server-webapp</artifactId>
+                            <excludes>
+                                <exclude>META-INF/context.xml</exclude>
+                                <exclude>META-INF/MANIFEST.MF</exclude>
+                                <exclude>WEB-INF/solr.home/solr.xml</exclude>
+                                <exclude>WEB-INF/solr.home/core0/**</exclude>
+                            </excludes>
+                        </overlay>
+                    </overlays>
+
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+        <profile>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>ci</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>port-allocator-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>allocate-ports</goal>
+                                </goals>
+                                <configuration>
+                                    <ports>
+                                        <port>
+                                            <name>jetty.port</name>
+                                        </port>
+                                        <port>
+                                            <name>jetty.port.stop</name>
+                                        </port>
+                                    </ports>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.eclipse.jetty</groupId>
+                        <artifactId>jetty-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>start-jetty</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>start</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>stop-jetty</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>stop</goal>
+                                </goals>
+                                <configuration>
+                                    <stopWait>10</stopWait>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
