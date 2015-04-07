@@ -16,10 +16,10 @@
   <field name="administrativeUnit" indexed="true" stored="true" multiValued="false" required="false" type="string" />
 
   <!-- the primary name -->
-  <field name="name"        indexed="true" stored="true"  multiValued="false" required="true" type="text"/>
+  <field name="name"        indexed="true" stored="true"  multiValued="false" required="true" type="text" />
 
   <!-- not ngrammed fields for exact matches -->
-  <field name="name_exact"  indexed="true" stored="false" multiValued="false" required="true" type="text_exact"/>
+  <field name="name_exact"  indexed="true" stored="false" multiValued="false" required="true" type="text_exact" />
 
   <!-- a list of all names -->
   <field name="names"       indexed="true" stored="false" multiValued="true" required="false" type="text" omitNorms="true" />
