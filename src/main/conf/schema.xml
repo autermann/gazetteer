@@ -128,6 +128,62 @@
   <copyField source="admunit1_name"   dest="admunit1_names_exact" />
   <copyField source="admunit1_name"   dest="admunit1_name_exact" />
 
+  <!-- the primary name -->
+  <field name="admunit2_name"        indexed="true" stored="true"  multiValued="false" required="false" type="text"/>
+
+  <!-- not ngrammed fields for exact matches -->
+  <field name="admunit2_name_exact"  indexed="true" stored="false" multiValued="false" required="false"  type="text_exact"/>
+
+  <!-- a list of all names -->
+  <field name="admunit2_names"       indexed="true" stored="false" multiValued="true"  required="false" type="text" omitNorms="true" />
+
+  <!-- not ngrammed fields for exact matches -->
+  <field name="admunit2_names_exact" indexed="true" stored="false" multiValued="true"  required="false" type="text_exact" omitNorms="true" />
+
+  <!-- language specific fields -->
+  <field name="admunit2_name_bg" indexed="false" stored="true"  multiValued="true"  required="false" type="text_bg" />
+  <field name="admunit2_name_bs" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit2_name_cs" indexed="false" stored="true"  multiValued="true"  required="false" type="text_cs" />
+  <field name="admunit2_name_da" indexed="false" stored="true"  multiValued="true"  required="false" type="text_da" />
+  <field name="admunit2_name_de" indexed="false" stored="true"  multiValued="true"  required="false" type="text_de" />
+  <field name="admunit2_name_el" indexed="false" stored="true"  multiValued="true"  required="false" type="text_el" />
+  <field name="admunit2_name_en" indexed="false" stored="true"  multiValued="true"  required="false" type="text_en" />
+  <field name="admunit2_name_es" indexed="false" stored="true"  multiValued="true"  required="false" type="text_es" />
+  <field name="admunit2_name_et" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit2_name_fi" indexed="false" stored="true"  multiValued="true"  required="false" type="text_fi" />
+  <field name="admunit2_name_fr" indexed="false" stored="true"  multiValued="true"  required="false" type="text_fr" />
+  <field name="admunit2_name_ga" indexed="false" stored="true"  multiValued="true"  required="false" type="text_ga" />
+  <field name="admunit2_name_hr" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit2_name_hu" indexed="false" stored="true"  multiValued="true"  required="false" type="text_hu" />
+  <field name="admunit2_name_is" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit2_name_it" indexed="false" stored="true"  multiValued="true"  required="false" type="text_it" />
+  <field name="admunit2_name_lb" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit2_name_lt" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit2_name_lv" indexed="false" stored="true"  multiValued="true"  required="false" type="text_lv" />
+  <field name="admunit2_name_mk" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit2_name_mt" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit2_name_nl" indexed="false" stored="true"  multiValued="true"  required="false" type="text_nl" />
+  <field name="admunit2_name_no" indexed="false" stored="true"  multiValued="true"  required="false" type="text_no" />
+  <field name="admunit2_name_pl" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit2_name_pt" indexed="false" stored="true"  multiValued="true"  required="false" type="text_pt" />
+  <field name="admunit2_name_rm" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit2_name_ro" indexed="false" stored="true"  multiValued="true"  required="false" type="text_ro" />
+  <field name="admunit2_name_sk" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit2_name_sl" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit2_name_sq" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit2_name_sr" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit2_name_sv" indexed="false" stored="true"  multiValued="true"  required="false" type="text_sv" />
+  <field name="admunit2_name_tr" indexed="false" stored="true"  multiValued="true"  required="false" type="text_tr" />
+
+  <!-- copy all alternative names into a single array -->
+  <copyField source="admunit2_name_*" dest="admunit2_names" />
+  <copyField source="admunit2_name"   dest="admunit2_names" />
+
+  <!-- maintain the non-stemmed/ngrammed words for exact matches -->
+  <copyField source="admunit2_name_*" dest="admunit2_names_exact" />
+  <copyField source="admunit2_name"   dest="admunit2_names_exact" />
+  <copyField source="admunit2_name"   dest="admunit2_name_exact" />
+
   <!-- feature type enum -->
   <fieldType name="featureType" class="solr.EnumField" enumsConfig="enums.xml" enumName="featureType" />
 
