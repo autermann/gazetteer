@@ -11,7 +11,7 @@
   <field name="featureType" indexed="true" stored="true" multiValued="false" required="true" type="featureType" />
   <field name="country" indexed="true" stored="true" multiValued="false" required="false" type="string" />
   <field name="population" indexed="true" stored="true" multiValued="false" required="false" type="int" />
-  
+
   <!-- id if the administrative unit -->
   <field name="administrativeUnit" indexed="true" stored="true" multiValued="false" required="false" type="string" />
 
@@ -62,7 +62,7 @@
   <field name="name_sv" indexed="false" stored="true" multiValued="true" required="false" type="text_sv" />
   <field name="name_tr" indexed="false" stored="true" multiValued="true" required="false" type="text_tr" />
 
-  
+
   <!-- copy all alternative names into a single array -->
   <copyField source="name_*" dest="names" />
   <copyField source="name"   dest="names" />
@@ -71,62 +71,62 @@
   <copyField source="name_*" dest="names_exact" />
   <copyField source="name"   dest="names_exact" />
   <copyField source="name"   dest="name_exact" />
-  
+
   <!-- the primary name -->
-  <field name="administrative_unit_name"        indexed="true" stored="true"  multiValued="false" required="false" type="text"/>
+  <field name="admunit1_name"        indexed="true" stored="true"  multiValued="false" required="false" type="text"/>
 
   <!-- not ngrammed fields for exact matches -->
-  <field name="administrative_unit_name_exact"  indexed="true" stored="false" multiValued="false" required="false"  type="text_exact"/>
+  <field name="admunit1_name_exact"  indexed="true" stored="false" multiValued="false" required="false"  type="text_exact"/>
 
   <!-- a list of all names -->
-  <field name="administrative_unit_names"       indexed="true" stored="false" multiValued="true"  required="false" type="text" omitNorms="true" />
+  <field name="admunit1_names"       indexed="true" stored="false" multiValued="true"  required="false" type="text" omitNorms="true" />
 
   <!-- not ngrammed fields for exact matches -->
-  <field name="administrative_unit_names_exact" indexed="true" stored="false" multiValued="true"  required="false" type="text_exact" omitNorms="true" />
+  <field name="admunit1_names_exact" indexed="true" stored="false" multiValued="true"  required="false" type="text_exact" omitNorms="true" />
 
   <!-- language specific fields -->
-  <field name="administrative_unit_name_bg" indexed="false" stored="true"  multiValued="true"  required="false" type="text_bg" />
-  <field name="administrative_unit_name_bs" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
-  <field name="administrative_unit_name_cs" indexed="false" stored="true"  multiValued="true"  required="false" type="text_cs" />
-  <field name="administrative_unit_name_da" indexed="false" stored="true"  multiValued="true"  required="false" type="text_da" />
-  <field name="administrative_unit_name_de" indexed="false" stored="true"  multiValued="true"  required="false" type="text_de" />
-  <field name="administrative_unit_name_el" indexed="false" stored="true"  multiValued="true"  required="false" type="text_el" />
-  <field name="administrative_unit_name_en" indexed="false" stored="true"  multiValued="true"  required="false" type="text_en" />
-  <field name="administrative_unit_name_es" indexed="false" stored="true"  multiValued="true"  required="false" type="text_es" />
-  <field name="administrative_unit_name_et" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
-  <field name="administrative_unit_name_fi" indexed="false" stored="true"  multiValued="true"  required="false" type="text_fi" />
-  <field name="administrative_unit_name_fr" indexed="false" stored="true"  multiValued="true"  required="false" type="text_fr" />
-  <field name="administrative_unit_name_ga" indexed="false" stored="true"  multiValued="true"  required="false" type="text_ga" />
-  <field name="administrative_unit_name_hr" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
-  <field name="administrative_unit_name_hu" indexed="false" stored="true"  multiValued="true"  required="false" type="text_hu" />
-  <field name="administrative_unit_name_is" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
-  <field name="administrative_unit_name_it" indexed="false" stored="true"  multiValued="true"  required="false" type="text_it" />
-  <field name="administrative_unit_name_lb" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
-  <field name="administrative_unit_name_lt" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
-  <field name="administrative_unit_name_lv" indexed="false" stored="true"  multiValued="true"  required="false" type="text_lv" />
-  <field name="administrative_unit_name_mk" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
-  <field name="administrative_unit_name_mt" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
-  <field name="administrative_unit_name_nl" indexed="false" stored="true"  multiValued="true"  required="false" type="text_nl" />
-  <field name="administrative_unit_name_no" indexed="false" stored="true"  multiValued="true"  required="false" type="text_no" />
-  <field name="administrative_unit_name_pl" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
-  <field name="administrative_unit_name_pt" indexed="false" stored="true"  multiValued="true"  required="false" type="text_pt" />
-  <field name="administrative_unit_name_rm" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
-  <field name="administrative_unit_name_ro" indexed="false" stored="true"  multiValued="true"  required="false" type="text_ro" />
-  <field name="administrative_unit_name_sk" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
-  <field name="administrative_unit_name_sl" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
-  <field name="administrative_unit_name_sq" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
-  <field name="administrative_unit_name_sr" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
-  <field name="administrative_unit_name_sv" indexed="false" stored="true"  multiValued="true"  required="false" type="text_sv" />
-  <field name="administrative_unit_name_tr" indexed="false" stored="true"  multiValued="true"  required="false" type="text_tr" />
+  <field name="admunit1_name_bg" indexed="false" stored="true"  multiValued="true"  required="false" type="text_bg" />
+  <field name="admunit1_name_bs" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit1_name_cs" indexed="false" stored="true"  multiValued="true"  required="false" type="text_cs" />
+  <field name="admunit1_name_da" indexed="false" stored="true"  multiValued="true"  required="false" type="text_da" />
+  <field name="admunit1_name_de" indexed="false" stored="true"  multiValued="true"  required="false" type="text_de" />
+  <field name="admunit1_name_el" indexed="false" stored="true"  multiValued="true"  required="false" type="text_el" />
+  <field name="admunit1_name_en" indexed="false" stored="true"  multiValued="true"  required="false" type="text_en" />
+  <field name="admunit1_name_es" indexed="false" stored="true"  multiValued="true"  required="false" type="text_es" />
+  <field name="admunit1_name_et" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit1_name_fi" indexed="false" stored="true"  multiValued="true"  required="false" type="text_fi" />
+  <field name="admunit1_name_fr" indexed="false" stored="true"  multiValued="true"  required="false" type="text_fr" />
+  <field name="admunit1_name_ga" indexed="false" stored="true"  multiValued="true"  required="false" type="text_ga" />
+  <field name="admunit1_name_hr" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit1_name_hu" indexed="false" stored="true"  multiValued="true"  required="false" type="text_hu" />
+  <field name="admunit1_name_is" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit1_name_it" indexed="false" stored="true"  multiValued="true"  required="false" type="text_it" />
+  <field name="admunit1_name_lb" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit1_name_lt" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit1_name_lv" indexed="false" stored="true"  multiValued="true"  required="false" type="text_lv" />
+  <field name="admunit1_name_mk" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit1_name_mt" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit1_name_nl" indexed="false" stored="true"  multiValued="true"  required="false" type="text_nl" />
+  <field name="admunit1_name_no" indexed="false" stored="true"  multiValued="true"  required="false" type="text_no" />
+  <field name="admunit1_name_pl" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit1_name_pt" indexed="false" stored="true"  multiValued="true"  required="false" type="text_pt" />
+  <field name="admunit1_name_rm" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit1_name_ro" indexed="false" stored="true"  multiValued="true"  required="false" type="text_ro" />
+  <field name="admunit1_name_sk" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit1_name_sl" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit1_name_sq" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit1_name_sr" indexed="false" stored="true"  multiValued="true"  required="false" type="text" />
+  <field name="admunit1_name_sv" indexed="false" stored="true"  multiValued="true"  required="false" type="text_sv" />
+  <field name="admunit1_name_tr" indexed="false" stored="true"  multiValued="true"  required="false" type="text_tr" />
 
   <!-- copy all alternative names into a single array -->
-  <copyField source="administrative_unit_name_*" dest="administrative_unit_names" />
-  <copyField source="administrative_unit_name"   dest="administrative_unit_names" />
+  <copyField source="admunit1_name_*" dest="admunit1_names" />
+  <copyField source="admunit1_name"   dest="admunit1_names" />
 
   <!-- maintain the non-stemmed/ngrammed words for exact matches -->
-  <copyField source="administrative_unit_name_*" dest="administrative_unit_names_exact" />
-  <copyField source="administrative_unit_name"   dest="administrative_unit_names_exact" />
-  <copyField source="administrative_unit_name"   dest="administrative_unit_name_exact" />
+  <copyField source="admunit1_name_*" dest="admunit1_names_exact" />
+  <copyField source="admunit1_name"   dest="admunit1_names_exact" />
+  <copyField source="admunit1_name"   dest="admunit1_name_exact" />
 
   <!-- feature type enum -->
   <fieldType name="featureType" class="solr.EnumField" enumsConfig="enums.xml" enumName="featureType" />
@@ -142,7 +142,7 @@
   <fieldType name="text_exact" class="solr.TextField" positionIncrementGap="100">
     <analyzer type="index">
       <tokenizer class="solr.StandardTokenizerFactory"/>
-      <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" 
+      <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1"
         catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
       <filter class="solr.LowerCaseFilterFactory"/>
       <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
@@ -153,13 +153,13 @@
         catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
       <filter class="solr.LowerCaseFilterFactory"/>
     </analyzer>
-  </fieldType>  
+  </fieldType>
 
   <!-- generic text -->
   <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
     <analyzer type="index">
       <tokenizer class="solr.StandardTokenizerFactory"/>
-      <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" 
+      <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1"
         catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
       <filter class="solr.LowerCaseFilterFactory"/>
       <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="25" />
@@ -171,7 +171,7 @@
         catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
       <filter class="solr.LowerCaseFilterFactory"/>
     </analyzer>
-  </fieldType>  
+  </fieldType>
 
   <!-- various base types -->
   <fieldType name="string" class="solr.StrField" sortMissingLast="true"/>
