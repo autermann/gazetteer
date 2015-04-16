@@ -3,6 +3,7 @@
   <enum name="featureType">
     <value>COUNTRY</value>
     <value>ADM1</value>
+    <value>ADM2</value>
     <value>PPL</value>
   </enum>
 </enumsConfig>
