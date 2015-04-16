@@ -18,12 +18,12 @@
     <updateLog>
       <str name="dir">${solr.ulog.dir:}</str>
     </updateLog>
-    <autoCommit> 
-      <maxTime>${solr.autoCommit.maxTime:15000}</maxTime> 
-      <openSearcher>false</openSearcher> 
+    <autoCommit>
+      <maxTime>${solr.autoCommit.maxTime:15000}</maxTime>
+      <openSearcher>false</openSearcher>
     </autoCommit>
-    <autoSoftCommit> 
-      <maxTime>${solr.autoSoftCommit.maxTime:-1}</maxTime> 
+    <autoSoftCommit>
+      <maxTime>${solr.autoSoftCommit.maxTime:-1}</maxTime>
     </autoSoftCommit>
   </updateHandler>
 
@@ -50,13 +50,13 @@
   </query>
 
   <requestDispatcher handleSelect="false" >
-    <requestParsers enableRemoteStreaming="true" 
+    <requestParsers enableRemoteStreaming="true"
                     multipartUploadLimitInKB="2048000"
                     formdataUploadLimitInKB="2048"
                     addHttpRequestToContext="false"/>
 
      <httpCaching never304="false" lastModifiedFrom="dirLastMod" etagSeed="gazetteer-v1">
-       <cacheControl>max-age=604800, public</cacheControl> 
+       <cacheControl>max-age=604800, public</cacheControl>
      </httpCaching>
   </requestDispatcher>
 
@@ -121,19 +121,19 @@
   </requestHandler>
   -->
 
-  <requestHandler name="/analysis/field" 
+  <requestHandler name="/analysis/field"
                   class="solr.FieldAnalysisRequestHandler"
                   startup="lazy" />
 
 
-  <requestHandler name="/analysis/document" 
-                  class="solr.DocumentAnalysisRequestHandler" 
+  <requestHandler name="/analysis/document"
+                  class="solr.DocumentAnalysisRequestHandler"
                   startup="lazy" />
 
   <!-- Admin Handlers
 
        Admin Handlers - This will register all the standard admin
-       RequestHandlers.  
+       RequestHandlers.
     -->
   <requestHandler name="/admin/" class="solr.admin.AdminHandlers" />
   <!-- This single handler is equivalent to the following... -->
@@ -146,16 +146,16 @@
      <requestHandler name="/admin/file"       class="solr.admin.ShowFileRequestHandler" >
     -->
   <!-- If you wish to hide files under ${solr.home}/conf, explicitly
-       register the ShowFileRequestHandler using the definition below. 
+       register the ShowFileRequestHandler using the definition below.
        NOTE: The glob pattern ('*') is the only pattern supported at present, *.xml will
              not exclude all files ending in '.xml'. Use it to exclude _all_ updates
     -->
   <!--
      <requestHandler name="/admin/file" class="solr.admin.ShowFileRequestHandler" >
        <lst name="invariants">
-         <str name="hidden">synonyms.txt</str> 
-         <str name="hidden">anotherfile.txt</str> 
-         <str name="hidden">*</str> 
+         <str name="hidden">synonyms.txt</str>
+         <str name="hidden">anotherfile.txt</str>
+         <str name="hidden">*</str>
        </lst>
      </requestHandler>
     -->
@@ -168,19 +168,19 @@
     <lst name="defaults">
       <str name="echoParams">all</str>
     </lst>
-    <!-- An optional feature of the PingRequestHandler is to configure the 
-         handler with a "healthcheckFile" which can be used to enable/disable 
+    <!-- An optional feature of the PingRequestHandler is to configure the
+         handler with a "healthcheckFile" which can be used to enable/disable
          the PingRequestHandler.
-         relative paths are resolved against the data dir 
+         relative paths are resolved against the data dir
       -->
     <!-- <str name="healthcheckFile">server-enabled.txt</str> -->
   </requestHandler>
 
   <!--
-  <requestHandler name="/replication" class="solr.ReplicationHandler"> 
-       To enable simple master/slave replication, uncomment one of the 
+  <requestHandler name="/replication" class="solr.ReplicationHandler">
+       To enable simple master/slave replication, uncomment one of the
        sections below, depending on whether this solr instance should be
-       the "master" or a "slave".  If this instance is a "slave" you will 
+       the "master" or a "slave".  If this instance is a "slave" you will
        also need to fill in the masterUrl to point to a real machine.
      <lst name="master">
        <str name="replicateAfter">commit</str>
@@ -196,18 +196,18 @@
 
   <!-- Search Components
 
-       Search components are registered to SolrCore and used by 
+       Search components are registered to SolrCore and used by
        instances of SearchHandler (which can access them by name)
-       
+
        By default, the following components are available:
-       
+
        <searchComponent name="query"     class="solr.QueryComponent" />
        <searchComponent name="facet"     class="solr.FacetComponent" />
        <searchComponent name="mlt"       class="solr.MoreLikeThisComponent" />
        <searchComponent name="highlight" class="solr.HighlightComponent" />
        <searchComponent name="stats"     class="solr.StatsComponent" />
        <searchComponent name="debug"     class="solr.DebugComponent" />
-   
+
        Default configuration in a requestHandler would look like:
 
        <arr name="components">
@@ -219,32 +219,37 @@
          <str>debug</str>
        </arr>
 
-       If you register a searchComponent to one of the standard names, 
+       If you register a searchComponent to one of the standard names,
        that will be used instead of the default.
 
        To insert components before or after the 'standard' components, use:
-    
+
        <arr name="first-components">
          <str>myFirstComponentName</str>
        </arr>
-    
+
        <arr name="last-components">
          <str>myLastComponentName</str>
        </arr>
 
        NOTE: The component registered with the name "debug" will
-       always be executed after the "last-components" 
-       
+       always be executed after the "last-components"
+
      -->
-  
+
   <updateRequestProcessorChain name="skip-empty" default="true">
     <processor class="solr.processor.TrimFieldUpdateProcessorFactory" />
     <processor class="solr.processor.RemoveBlankFieldUpdateProcessorFactory" />
     <processor class="solr.processor.UniqFieldsUpdateProcessorFactory">
       <str name="fieldRegex">name_.*</str>
       <str name="fieldName">names</str>
-      <str name="fieldRegex">administrative_unit_name_.*</str>
-      <str name="fieldName">administrative_unit_names</str>
+      <str name="fieldName">names_exact</str>
+      <str name="fieldRegex">admunit1_name_.*</str>
+      <str name="fieldName">admunit1_names</str>
+      <str name="fieldName">admunit1_names_exact</str>
+      <str name="fieldRegex">admunit2_name_.*</str>
+      <str name="fieldName">admunit2_names</str>
+      <str name="fieldName">admunit2_names_exact</str>
     </processor>
     <processor class="solr.processor.LogUpdateProcessorFactory" />
     <processor class="solr.processor.RunUpdateProcessorFactory" />
@@ -262,7 +267,7 @@
   <queryResponseWriter name="json" class="solr.JSONResponseWriter" default="true">
     <str name="content-type">application/json; charset=UTF-8</str>
   </queryResponseWriter>
-  
+
   <admin>
     <defaultQuery>*:*</defaultQuery>
   </admin>
