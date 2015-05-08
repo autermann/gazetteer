@@ -248,14 +248,16 @@ Languages are identified by their [ISO 639-1][iso-639-1] code:
 
 The Gazetteer supports the default [Solr Query Syntax][solrQuerySyntax]. For extensive details of the API, please refer to the Solr documentation. There are two endpoints to query municipalities: `/select` and `/query`. Both support the same operations, but the latter sets sane defaults for most query parameters:
 
-* `defType`: `dismax`
-* `df`: `name_exact,names_exact,name,names`
-* `indent`: `false`
-* `qf`: `name_exact^25 names_exact^20 name^10 names^1`
-* `fq`: `featureType:PPL`
-* `fl`: `*,score`,
-* `rows`: `20`
-* `wt`: `json`
+| Parameter | Default Value                                  |
+|-----------|------------------------------------------------|
+| `defType` | `dismax`                                       |
+| `df`      | `name_exact,names_exact,name,names`            |
+| `indent`  | `false`                                        |
+| `qf`      | `name_exact^25 names_exact^20 name^10 names^1` |
+| `fq`      | `featureType:PPL`                              |
+| `fl`      | `*,score`                                      |
+| `rows`    | `20`                                           |
+| `wt`      | `json`                                         |
 
 A query (parameter `q`) will search the the primary and language-specific names of all municipalities. Exact matches and matches of the primary name are scored higher than those of other names or partial matches.
 
