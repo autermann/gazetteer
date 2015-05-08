@@ -259,7 +259,7 @@ The Gazetteer supports the default [Solr Query Syntax][solrQuerySyntax]. For ext
 
 A query (parameter `q`) will search the the primary and language-specific names of all municipalities. Exact matches and matches of the primary name are scored higher than those of other names or partial matches.
 
-Per default the endpoint returns all fields (i.e. the names in all languages) plus the score value. When using the service, the `fl` parameter should be set to reflect the user's  preferred language. E.g. for English it should set to `name`, `name_en`, `country`, `admunit1_name`, `admunit1_name_en`, `admunit2_name`, `admunit2_name_en`, `geometry`.
+Per default the endpoint returns all fields (i.e. the names in all languages) plus the score value. When using the service, the `fl` parameter should be set to reflect the user's  preferred language. E.g. for English it should be set to `name`, `name_en`, `country`, `admunit1_name`, `admunit1_name_en`, `admunit2_name`, `admunit2_name_en`, `geometry`.
 
 This would be a complete query:
 `/query?fl=name,name_en,country,admunit1_name,admunit1_name_en,admunit2_name,admunit2_name_en,geometry&q=M%C3%BCnchen`
