@@ -6,16 +6,12 @@
   <field name="id" indexed="true" multiValued="false" required="true" stored="true" type="string"/>
   <field name="_version_" indexed="true" stored="true" type="long"/>
   <field name="geometry" indexed="false" multiValued="true" required="true" stored="true" type="location"/>
-  <field name="wikipedia" indexed="false" multiValued="false" required="false" stored="true" type="string"/>
   <field name="dbpedia" indexed="false" multiValued="false" required="false" stored="true" type="string"/>
   <field name="featureType" indexed="true" stored="true" multiValued="false" required="true" type="featureType" />
   <field name="country" indexed="true" stored="true" multiValued="false" required="false" type="string" />
   <field name="population" indexed="true" stored="true" multiValued="false" required="false" type="int" />
 
-  <!-- id if the administrative unit -->
-  <field name="administrativeUnit" indexed="true" stored="true" multiValued="false" required="false" type="string" />
-
-  <!-- the primary name -->
+    <!-- the primary name -->
   <field name="name"        indexed="true" stored="true"  multiValued="false" required="true" type="text" />
 
   <!-- not ngrammed fields for exact matches -->
