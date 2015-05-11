@@ -316,6 +316,17 @@ This would be a complete query:
 
 Additionally the scoring can be altered to boost large municipalities by adding population to the score. This can be done by setting the `bf` query parameter to something like `sqrt(population)`.
 
+### Additional Examples
+
+* To restrict the returned features to a specific country, add `fq=country:DE`:
+  `/query?fl=name,name_en,country,admunit1_name,admunit1_name_en,admunit2_name,admunit2_name_en,geometry&q=M%C3%BCnchen&fq=country:DE&fq=featureType:PPL`. Note that you have to explicitly add `fq=featureType:PPL` to limit the query to populated places.
+* To list the german name of all first-order administrative units of Germany:
+  `/query?q=*%3A*&fl=name_de&wt=json&indent=true&defType=edismax&qf=&df=&fq=country:DE&fq=featureType:ADM1`
+  * Same for France:
+    `/query?q=*%3A*&fl=name_de&wt=json&indent=true&defType=edismax&qf=&df=&fq=country:FR&fq=featureType:ADM1`
+* To find cities containing the name *Berlin* that are not located in Germany:
+  `/query?q=Berlin&fl=name,country&rows=35&fq=!country:DE&fq=featureType:PPL`
+
 [solr]: <http://lucene.apache.org/solr/>
 [solrQuerySyntax]: <https://wiki.apache.org/solr/SolrQuerySyntax>
 [iso-639-1]: <http://www.iso.org/iso/catalogue_detail?csnumber=22109>
