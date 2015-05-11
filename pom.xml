@@ -126,20 +126,6 @@
         </dependency>
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>ct-dist-releases</id>
-            <name>repository for sdi.suite releases</name>
-            <url>http://vsdev0860.dev.esri-de.com/nexus/content/repositories/releases</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <build>
         <defaultGoal>install</defaultGoal>
         <finalName>gazetteer</finalName>
